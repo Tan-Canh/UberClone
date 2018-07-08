@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@drawable/background">
+
+
+    <LinearLayout
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="U B E R"
+            android:textColor="@color/color_white"
+            android:textSize="32sp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PARTNER"
+            android:textColor="@color/color_white"
+            android:gravity="center"
+            android:layout_marginTop="8dp"
+            android:textSize="15sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+
+            <Button
+                android:id="@+id/btn_sign_in"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="SIGN IN"
+                android:textColor="@color/color_white"
+                android:background="@drawable/btn_signin_background"
+                android:layout_margin="8dp"/>
+
+            <Button
+                android:id="@+id/btn_register"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="REGISTER"
+                android:background="@drawable/btn_register_background"
+                android:layout_margin="8dp"/>
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Looking for the rider app"
+            android:textColor="@color/color_bottom"
+            android:gravity="center"
+            android:layout_marginBottom="16dp"
+            android:textSize="14sp"/>
+    </LinearLayout>
+
+
+
+</RelativeLayout>

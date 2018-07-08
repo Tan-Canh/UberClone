@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/layout_register"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.CardView
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="420dp"
+        app:cardElevation="10dp">
+
+        <LinearLayout
+            android:layout_margin="8dp"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_gravity="center"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_email_black_24dp"/>
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/email_edit_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimary"
+                    app:met_baseColor="@color/colorPrimary"
+                    app:met_textColorHint="@color/colorPrimary"
+                    app:met_primaryColor="@color/colorPrimary"
+                    app:met_singleLineEllipsis="true"
+                    app:met_floatingLabel="highlight"
+                    android:inputType="textEmailAddress"
+                    android:hint="Email"
+                    app:met_iconPadding="24dp"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_gravity="center"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_vpn_key_black_24dp"/>
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/edit_password_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimary"
+                    app:met_baseColor="@color/colorPrimary"
+                    app:met_textColorHint="@color/colorPrimary"
+                    app:met_primaryColor="@color/colorPrimary"
+                    app:met_singleLineEllipsis="true"
+                    app:met_floatingLabel="highlight"
+                    android:inputType="textPassword"
+                    android:hint="Passowrd"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_gravity="center"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_name_black_24dp"/>
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/edit_name_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimary"
+                    app:met_baseColor="@color/colorPrimary"
+                    app:met_textColorHint="@color/colorPrimary"
+                    app:met_primaryColor="@color/colorPrimary"
+                    app:met_singleLineEllipsis="true"
+                    app:met_floatingLabel="highlight"
+                    android:inputType="textPersonName"
+                    android:hint="Name"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_gravity="center"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_phone_android_black_24dp"/>
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/edit_phone_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimary"
+                    app:met_baseColor="@color/colorPrimary"
+                    app:met_textColorHint="@color/colorPrimary"
+                    app:met_primaryColor="@color/colorPrimary"
+                    app:met_singleLineEllipsis="true"
+                    app:met_floatingLabel="highlight"
+                    android:inputType="phone"
+                    android:hint="Phone"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+
+                <Button
+                    android:id="@+id/btn_no_register"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="CANCEL"
+                    android:textColor="@color/color_white"
+                    android:background="@drawable/btn_signin_background"
+                    android:layout_margin="8dp"/>
+
+                <Button
+                    android:id="@+id/btn_register"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="REGISTER"
+                    android:background="@drawable/btn_register_background"
+                    android:layout_margin="8dp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>
