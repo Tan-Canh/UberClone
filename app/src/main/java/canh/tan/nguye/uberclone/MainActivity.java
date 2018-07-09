@@ -1,7 +1,9 @@
 package canh.tan.nguye.uberclone;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -25,6 +27,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 import canh.tan.nguye.uberclone.model.User;
+import dmax.dialog.SpotsDialog;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -39,18 +42,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     RelativeLayout layout_register, layout_sign_in;
 
-   /* @Override
+    android.app.AlertDialog dialog;
+
+    @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
-    }*/
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        /*CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
                                         .setDefaultFontPath("fonts/arkhip_font.ttf")
                                         .setFontAttrId(R.attr.fontPath)
-                                        .build());*/
+                                        .build());
 
         setContentView(R.layout.activity_main);
 
@@ -60,6 +65,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         btnSignIn = findViewById(R.id.btn_sign_in);
         btnRegister = findViewById(R.id.btn_register);
+        dialog = new SpotsDialog.Builder().setContext(this).build();
 
 
         layout_register = findViewById(R.id.layout_register);
@@ -129,6 +135,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 edit_phone.setError("cannot be empty!");
                             }
                         }else {
+                            dialog.show();
                             auth.createUserWithEmailAndPassword(edit_email.getText().toString(), edit_password.getText().toString())
                                     .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                                         @Override
@@ -142,12 +149,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                         @Override
                                                         public void onSuccess(Void aVoid) {
+                                                            dialog.dismiss();
                                                             Snackbar.make(view, "Register successfully", Snackbar.LENGTH_SHORT).show();
                                                             builder.dismiss();
                                                         }
                                                     }).addOnFailureListener(new OnFailureListener() {
                                                 @Override
                                                 public void onFailure(@NonNull Exception e) {
+                                                    dialog.dismiss();
                                                     Snackbar.make(view, "Register failed!", Snackbar.LENGTH_SHORT).show();
                                                 }
                                             });
@@ -157,6 +166,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                         @Override
                                         public void onFailure(@NonNull Exception e) {
 
+                                            dialog.dismiss();
                                             Toast.makeText(MainActivity.this, "User existed!\nPlease! choose email difference", Toast.LENGTH_SHORT).show();
                                         }
                                     });
@@ -205,16 +215,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 edit_password_sign_in.setError("cannot be empty!");
                             }
                         }else {
+                            dialog.show();
                             auth.signInWithEmailAndPassword(edit_email_sign_in.getText().toString(), edit_password_sign_in.getText().toString())
                                     .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                                         @Override
                                         public void onSuccess(AuthResult authResult) {
+                                            dialog.dismiss();
                                             Toast.makeText(MainActivity.this, "Sign in successfully", Toast.LENGTH_SHORT).show();
                                             builder.dismiss();
+                                            Intent intentMap = new Intent(MainActivity.this, WelcomeActivity.class);
+                                            startActivity(intentMap);
+                                            finish();
                                         }
                                     }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
+                                    dialog.dismiss();
                                     Toast.makeText(MainActivity.this, "Usert not exits!", Toast.LENGTH_SHORT).show();
                                 }
                             });
