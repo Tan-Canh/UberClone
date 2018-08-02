@@ -44,14 +44,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     android.app.AlertDialog dialog;
 
+    //khởi tạo lại font chữ
     @Override
     protected void attachBaseContext(Context newBase) {
+        //framework Calligraphy
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //init Calligraphy framework and put above setContentView
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
                                         .setDefaultFontPath("fonts/arkhip_font.ttf")
                                         .setFontAttrId(R.attr.fontPath)
@@ -59,17 +63,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         setContentView(R.layout.activity_main);
 
+        //init Firebase
         database = FirebaseDatabase.getInstance();
         userRef = database.getReference("Users");
         auth = FirebaseAuth.getInstance();
 
+        //init component
         btnSignIn = findViewById(R.id.btn_sign_in);
         btnRegister = findViewById(R.id.btn_register);
+        //SpotDialog framework
         dialog = new SpotsDialog.Builder().setContext(this).build();
 
 
         layout_register = findViewById(R.id.layout_register);
         layout_sign_in = findViewById(R.id.layout_sign_in);
+
+        //create listener event
         btnRegister.setOnClickListener(this);
         btnSignIn.setOnClickListener(this);
     }
@@ -77,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         final Dialog builder = new Dialog(this);
+        //init layoutInflater
         LayoutInflater inflater = LayoutInflater.from(this);
         final View view;
 
@@ -84,12 +94,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()){
             case R.id.btn_register:
 
+                //assign file layout xml to view
                 view = inflater.inflate(R.layout.dialog_register, null, false);
 
                 builder.setContentView(view);
                 builder.setTitle("Register");
                 builder.setCancelable(false);
 
+                //init component of layout register
                 final MaterialEditText edit_email, edit_password, edit_name, edit_phone;
                 Button btnCancel, btnRegister_register;
 
